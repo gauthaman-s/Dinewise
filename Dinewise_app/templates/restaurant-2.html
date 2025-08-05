@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant 2 Menu</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <script src="{% static 'main.js' %}" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <img src="{% static 'Cognizant-Logo.jpg' %}" alt="Cognizant Logo" class="logo">
+            <span class="brand">Dinewise</span>
+        </div>
+        <div class="navbar-right">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'cart' %}">Cart</a>
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+    </nav>
+    <main class="menu-section">
+        <h2>Restaurant 2 Menu</h2>
+        <ul class="menu-list">
+            <li>Burger - $9</li>
+            <li>Fries - $4</li>
+            <li>Shake - $5</li>
+        </ul>
+        <a href="{% url 'cart' %}" class="menu-btn">Go to Cart</a>
+        <a href="{% url 'index' %}" class="menu-btn">Back to Restaurants</a>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 Dinewise | Powered by Cognizant</p>
+    </footer>
+</body>
+</html>

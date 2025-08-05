@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurants</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <script src="{% static 'main.js' %}" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <img src="{% static 'Cognizant-Logo.jpg' %}" alt="Cognizant Logo" class="logo">
+            <span class="brand">Dinewise</span>
+        </div>
+        <div class="navbar-right">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'cart' %}">Cart</a>
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+    </nav>
+    <header class="intro-section">
+        <h1>Welcome to Dinewise</h1>
+        <p>Your one-stop solution to explore and order from the best restaurants around you. Enjoy a seamless dining experience!</p>
+    </header>
+    <main class="restaurants-section">
+        <h2>Choose a Restaurant</h2>
+        <div class="restaurant-cards">
+            <div class="restaurant-card">
+                <h3>Restaurant 1</h3>
+                <p>Italian Cuisine - Pizza, Pasta, Salad</p>
+                <a href="{% url 'restaurant_1' %}" class="menu-btn">View Menu</a>
+            </div>
+            <div class="restaurant-card">
+                <h3>Restaurant 2</h3>
+                <p>American Classics - Burger, Fries, Shake</p>
+                <a href="{% url 'restaurant_2' %}" class="menu-btn">View Menu</a>
+            </div>
+            <div class="restaurant-card">
+                <h3>Restaurant 3</h3>
+                <p>Japanese Delights - Sushi, Ramen, Tempura</p>
+                <a href="{% url 'restaurant_3' %}" class="menu-btn">View Menu</a>
+            </div>
+            <div class="restaurant-card">
+                <h3>Restaurant 4</h3>
+                <p>Mexican Fiesta - Tacos, Burrito, Nachos</p>
+                <a href="{% url 'restaurant_4' %}" class="menu-btn">View Menu</a>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 Dinewise | Powered by Cognizant</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Receipt</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <script src="{% static 'main.js' %}" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <img src="{% static 'Cognizant-Logo.jpg' %}" alt="Cognizant Logo" class="logo">
+            <span class="brand">Dinewise</span>
+        </div>
+        <div class="navbar-right">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'cart' %}">Cart</a>
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+    </nav>
+    <main class="receipt-section">
+        <h2>Receipt</h2>
+        <div id="receipt-details">
+            <!-- Receipt details will be shown here -->
+        </div>
+        <button onclick="window.print()" class="menu-btn">Download Receipt</button>
+        <a href="{% url 'index' %}" class="menu-btn">Back to Home</a>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 Dinewise | Powered by Cognizant</p>
+    </footer>
+</body>
+</html>
