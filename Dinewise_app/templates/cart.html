@@ -19,15 +19,51 @@
             <a href="{% url 'login' %}">Login</a>
         </div>
     </nav>
-    <main class="cart-section">
-        <h2>Your Cart</h2>
+    <main class="cart-section" style="max-width:800px;margin:2rem auto;padding:2rem 1rem;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(27,94,32,0.07);min-height:60vh;">
+        <h2 style="text-align:center;margin-bottom:2rem;">Your Cart</h2>
         <div id="cart-items">
-            <!-- Cart items will be listed here -->
+            {% if cart and cart|length > 0 %}
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" name="clear_cart" value="1" class="menu-btn" style="background:#e67e22;color:#fff;margin-bottom:10px;">Clear Cart</button>
+                    <table style="width:100%;border-collapse:collapse;background:#f9f9f9;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,0.04);">
+                        <thead>
+                            <tr style="background:#e8f5e9;">
+                                <th style="padding:12px 8px;">Item</th>
+                                <th style="padding:12px 8px;">Image</th>
+                                <th style="padding:12px 8px;">Price</th>
+                                <th style="padding:12px 8px;">Quantity</th>
+                                <th style="padding:12px 8px;">Subtotal</th>
+                                <th style="padding:12px 8px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in cart %}
+                            <tr style="border-bottom:1px solid #e0e0e0;">
+                                <td style="padding:10px 8px;">{{ item.name }}</td>
+                                <td style="padding:10px 8px;"><img src="{% static item.image %}" alt="{{ item.name }}" style="width:60px;height:40px;object-fit:cover;border-radius:4px;"></td>
+                                <td style="padding:10px 8px;">₹{{ item.price }}</td>
+                                <td style="padding:10px 8px;">{{ item.quantity }}</td>
+                                <td style="padding:10px 8px;">₹{{ item.price|add:'0'|floatformat:0|floatformat }} x {{ item.quantity }} = ₹{{ item.price|add:'0'|floatformat:0|floatformat|floatformat:0|floatformat|add:item.quantity|floatformat:0 }}</td>
+                                <td style="padding:10px 8px;">
+                                    <button type="submit" name="delete_index" value="{{ forloop.counter0 }}" class="menu-btn" style="background:#e74c3c;color:#fff;">Delete</button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </form>
+                <div style="margin-top:20px;font-size:1.2em;font-weight:bold;text-align:right;">Total: ₹{{ total }}</div>
+            {% else %}
+                <p style="text-align:center;">Your cart is empty.</p>
+            {% endif %}
         </div>
-        <a href="{% url 'payment_gateway' %}" class="menu-btn">Proceed to Payment</a>
-        <a href="{% url 'index' %}" class="menu-btn">Back to Restaurants</a>
+        <div style="display:flex;justify-content:center;gap:1rem;margin-top:2rem;">
+            <a href="{% url 'payment_gateway' %}" class="menu-btn">Proceed to Payment</a>
+            <a href="{% url 'index' %}" class="menu-btn">Back to Restaurants</a>
+        </div>
     </main>
-    <footer class="footer">
+    <footer class="footer" style="position:static;left:0;bottom:0;width:100%;">
         <p>&copy; 2025 Dinewise | Powered by Cognizant</p>
     </footer>
 </body>

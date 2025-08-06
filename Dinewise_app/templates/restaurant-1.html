@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Restaurant 1 Menu</title>
+    <title>Kavin's Food Menu</title>
     <link rel="stylesheet" href="{% static 'index.css' %}">
     <script src="{% static 'main.js' %}" defer></script>
 </head>
@@ -19,17 +19,114 @@
             <a href="{% url 'login' %}">Login</a>
         </div>
     </nav>
+    {% if error %}
+    <script>
+        window.onload = function() {
+            alert("{{ error }}");
+        }
+    </script>
+    {% endif %}
     <main class="menu-section">
-        <h2>Restaurant 1 Menu</h2>
-        <ul class="menu-list">
-            <li>Pizza - $10</li>
-            <li>Pasta - $8</li>
-            <li>Salad - $6</li>
-        </ul>
-        <a href="{% url 'cart' %}" class="menu-btn">Go to Cart</a>
-        <a href="{% url 'index' %}" class="menu-btn">Back to Restaurants</a>
+        <h2>Kavin's Food - Veg Menu</h2>
+        <div class="restaurant-cards">
+            <form method="post" class="restaurant-card">
+                {% csrf_token %}
+                <!-- <img src="{% static 'veg_biryani.jpg' %}" alt="Veg Biryani" style="width:100%;height:140px;object-fit:cover;border-radius:8px 8px 0 0;"> -->
+                <h3>Veg Biryani</h3>
+                <p>Fragrant rice with mixed vegetables and spices.</p>
+                <p><b>₹120</b></p>
+                <input type="hidden" name="item_name" value="Veg Biryani">
+                <input type="hidden" name="item_price" value="120">
+                <input type="hidden" name="item_image" value="veg_biryani.jpg">
+                <label>Quantity:</label>
+                <input type="number" name="item_quantity" value="1" min="1" style="width:60px;">
+                <button class="menu-btn" type="submit">Add to Cart</button>
+            </form>
+            <form method="post" class="restaurant-card">
+                {% csrf_token %}
+                <!-- <img src="{% static 'paneer_butter_masala.jpg' %}" alt="Paneer Butter Masala" style="width:100%;height:140px;object-fit:cover;border-radius:8px 8px 0 0;"> -->
+                <h3>Paneer Butter Masala</h3>
+                <p>Cottage cheese cubes in creamy tomato gravy.</p>
+                <p><b>₹150</b></p>
+                <input type="hidden" name="item_name" value="Paneer Butter Masala">
+                <input type="hidden" name="item_price" value="150">
+                <input type="hidden" name="item_image" value="paneer_butter_masala.jpg">
+                <label>Quantity:</label>
+                <input type="number" name="item_quantity" value="1" min="1" style="width:60px;">
+                <button class="menu-btn" type="submit">Add to Cart</button>
+            </form>
+            <form method="post" class="restaurant-card">
+                {% csrf_token %}
+                <!-- <img src="{% static 'veg_noodles.jpg' %}" alt="Veg Noodles" style="width:100%;height:140px;object-fit:cover;border-radius:8px 8px 0 0;"> -->
+                <h3>Veg Noodles</h3>
+                <p>Stir-fried noodles with fresh vegetables.</p>
+                <p><b>₹100</b></p>
+                <input type="hidden" name="item_name" value="Veg Noodles">
+                <input type="hidden" name="item_price" value="100">
+                <input type="hidden" name="item_image" value="veg_noodles.jpg">
+                <label>Quantity:</label>
+                <input type="number" name="item_quantity" value="1" min="1" style="width:60px;">
+                <button class="menu-btn" type="submit">Add to Cart</button>
+            </form>
+            <form method="post" class="restaurant-card">
+                {% csrf_token %}
+                <!-- <img src="{% static 'gobi_manchurian.jpg' %}" alt="Gobi Manchurian" style="width:100%;height:140px;object-fit:cover;border-radius:8px 8px 0 0;"> -->
+                <h3>Gobi Manchurian</h3>
+                <p>Crispy cauliflower tossed in Indo-Chinese sauce.</p>
+                <p><b>₹110</b></p>
+                <input type="hidden" name="item_name" value="Gobi Manchurian">
+                <input type="hidden" name="item_price" value="110">
+                <input type="hidden" name="item_image" value="gobi_manchurian.jpg">
+                <label>Quantity:</label>
+                <input type="number" name="item_quantity" value="1" min="1" style="width:60px;">
+                <button class="menu-btn" type="submit">Add to Cart</button>
+            </form>
+            <form method="post" class="restaurant-card">
+                {% csrf_token %}
+                <!-- <img src="{% static 'gobi_manchurian.jpg' %}" alt="Gobi Manchurian" style="width:100%;height:140px;object-fit:cover;border-radius:8px 8px 0 0;"> -->
+                <h3>Gobi Manchurian</h3>
+                <p>Crispy cauliflower tossed in Indo-Chinese sauce.</p>
+                <p><b>₹110</b></p>
+                <input type="hidden" name="item_name" value="Gobi Manchurian">
+                <input type="hidden" name="item_price" value="110">
+                <input type="hidden" name="item_image" value="gobi_manchurian.jpg">
+                <label>Quantity:</label>
+                <input type="number" name="item_quantity" value="1" min="1" style="width:60px;">
+                <button class="menu-btn" type="submit">Add to Cart</button>
+            </form>
+            <form method="post" class="restaurant-card">
+                {% csrf_token %}
+                <!-- <img src="{% static 'gobi_manchurian.jpg' %}" alt="Gobi Manchurian" style="width:100%;height:140px;object-fit:cover;border-radius:8px 8px 0 0;"> -->
+                <h3>Gobi Manchurian</h3>
+                <p>Crispy cauliflower tossed in Indo-Chinese sauce.</p>
+                <p><b>₹110</b></p>
+                <input type="hidden" name="item_name" value="Gobi Manchurian">
+                <input type="hidden" name="item_price" value="110">
+                <input type="hidden" name="item_image" value="gobi_manchurian.jpg">
+                <label>Quantity:</label>
+                <input type="number" name="item_quantity" value="1" min="1" style="width:60px;">
+                <button class="menu-btn" type="submit">Add to Cart</button>
+            </form>
+            <form method="post" class="restaurant-card">
+                {% csrf_token %}
+                <!-- <img src="{% static 'gobi_manchurian.jpg' %}" alt="Gobi Manchurian" style="width:100%;height:140px;object-fit:cover;border-radius:8px 8px 0 0;"> -->
+                <h3>Gobi Manchurian</h3>
+                <p>Crispy cauliflower tossed in Indo-Chinese sauce.</p>
+                <p><b>₹110</b></p>
+                <input type="hidden" name="item_name" value="Gobi Manchurian">
+                <input type="hidden" name="item_price" value="110">
+                <input type="hidden" name="item_image" value="gobi_manchurian.jpg">
+                <label>Quantity:</label>
+                <input type="number" name="item_quantity" value="1" min="1" style="width:60px;">
+                <button class="menu-btn" type="submit">Add to Cart</button>
+            </form>
+        </div>
+        <div style="display:flex;justify-content:center;gap:1rem;margin-top:2rem;margin-bottom:3.5rem;">
+            <a href="{% url 'cart' %}" class="menu-btn">Go to Cart</a>
+            <a href="{% url 'index' %}" class="menu-btn">Back to Restaurants</a>
+        </div>
     </main>
-    <footer class="footer">
+    <footer class="footer" style="position:static;left:0;bottom:0;width:100%;z-index:10;">
         <p>&copy; 2025 Dinewise | Powered by Cognizant</p>
     </footer>
 </body>

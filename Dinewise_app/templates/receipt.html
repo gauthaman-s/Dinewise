@@ -19,15 +19,23 @@
             <a href="{% url 'login' %}">Login</a>
         </div>
     </nav>
-    <main class="receipt-section">
-        <h2>Receipt</h2>
-        <div id="receipt-details">
-            <!-- Receipt details will be shown here -->
+    <main class="receipt-section" style="max-width:600px;margin:2rem auto;padding:2rem 1rem;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(27,94,32,0.07);min-height:60vh;">
+        <h2 style="text-align:center;margin-bottom:2rem;">Payment Receipt</h2>
+        <div id="receipt-details" style="background:#f9f9f9;padding:1.5rem;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,0.04);margin-bottom:2rem;">
+            {% if payment %}
+                <p><b>Order ID:</b> {{ payment.order_id }}</p>
+                <p><b>Amount Paid:</b> ₹{{ payment.amount }}</p>
+                <p><b>Status:</b> {{ payment.status }}</p>
+                <p><b>Date & Time:</b> {{ payment.payment_time }}</p>
+                <p><b>Details:</b> {{ payment.details }}</p>
+            {% else %}
+                <p>No payment found.</p>
+            {% endif %}
         </div>
-        <button onclick="window.print()" class="menu-btn">Download Receipt</button>
+        <button onclick="window.print()" class="menu-btn" style="margin-bottom:2rem;">Download Receipt</button>
         <a href="{% url 'index' %}" class="menu-btn">Back to Home</a>
     </main>
-    <footer class="footer">
+    <footer class="footer" style="position:fixed;left:0;bottom:0;width:100%;z-index:10;">
         <p>&copy; 2025 Dinewise | Powered by Cognizant</p>
     </footer>
 </body>

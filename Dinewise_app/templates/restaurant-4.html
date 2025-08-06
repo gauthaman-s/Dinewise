@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Restaurant 4 Menu</title>
+    <title>Aladipattiyan - Sweets & Savouries Menu</title>
     <link rel="stylesheet" href="{% static 'index.css' %}">
     <script src="{% static 'main.js' %}" defer></script>
 </head>
@@ -19,17 +19,62 @@
             <a href="{% url 'login' %}">Login</a>
         </div>
     </nav>
+    {% if error %}
+    <script>
+        window.onload = function() {
+            alert("{{ error }}");
+        }
+    </script>
+    {% endif %}
     <main class="menu-section">
-        <h2>Restaurant 4 Menu</h2>
-        <ul class="menu-list">
-            <li>Tacos - $7</li>
-            <li>Burrito - $9</li>
-            <li>Nachos - $6</li>
-        </ul>
-        <a href="{% url 'cart' %}" class="menu-btn">Go to Cart</a>
-        <a href="{% url 'index' %}" class="menu-btn">Back to Restaurants</a>
+        <h2>Aladipattiyan - Sweets & Savouries Menu</h2>
+        <div class="restaurant-cards">
+            <form method="post" class="restaurant-card">
+                {% csrf_token %}
+                <!-- <img src="{% static 'laddu.jpg' %}" alt="Laddu" style="width:100%;height:140px;object-fit:cover;border-radius:8px 8px 0 0;"> -->
+                <h3>Laddu</h3>
+                <p>Sweet round balls made of flour and sugar.</p>
+                <p><b>₹30</b></p>
+                <input type="hidden" name="item_name" value="Laddu">
+                <input type="hidden" name="item_price" value="30">
+                <input type="hidden" name="item_image" value="laddu.jpg">
+                <label>Quantity:</label>
+                <input type="number" name="item_quantity" value="1" min="1" style="width:60px;">
+                <button class="menu-btn" type="submit">Add to Cart</button>
+            </form>
+            <form method="post" class="restaurant-card">
+                {% csrf_token %}
+                <!-- <img src="{% static 'murukku.jpg' %}" alt="Murukku" style="width:100%;height:140px;object-fit:cover;border-radius:8px 8px 0 0;"> -->
+                <h3>Murukku</h3>
+                <p>Crispy savoury snack.</p>
+                <p><b>₹20</b></p>
+                <input type="hidden" name="item_name" value="Murukku">
+                <input type="hidden" name="item_price" value="20">
+                <input type="hidden" name="item_image" value="murukku.jpg">
+                <label>Quantity:</label>
+                <input type="number" name="item_quantity" value="1" min="1" style="width:60px;">
+                <button class="menu-btn" type="submit">Add to Cart</button>
+            </form>
+            <form method="post" class="restaurant-card">
+                {% csrf_token %}
+                <!-- <img src="{% static 'mysorepak.jpg' %}" alt="Mysore Pak" style="width:100%;height:140px;object-fit:cover;border-radius:8px 8px 0 0;"> -->
+                <h3>Mysore Pak</h3>
+                <p>Rich sweet made with ghee and gram flour.</p>
+                <p><b>₹35</b></p>
+                <input type="hidden" name="item_name" value="Mysore Pak">
+                <input type="hidden" name="item_price" value="35">
+                <input type="hidden" name="item_image" value="mysorepak.jpg">
+                <label>Quantity:</label>
+                <input type="number" name="item_quantity" value="1" min="1" style="width:60px;">
+                <button class="menu-btn" type="submit">Add to Cart</button>
+            </form>
+        </div>
+        <div style="display:flex;justify-content:center;gap:1rem;margin-top:2rem;margin-bottom:3.5rem;">
+            <a href="{% url 'cart' %}" class="menu-btn">Go to Cart</a>
+            <a href="{% url 'index' %}" class="menu-btn">Back to Restaurants</a>
+        </div>
     </main>
-    <footer class="footer">
+    <footer class="footer" style="position:fixed;left:0;bottom:0;width:100%;z-index:10;">
         <p>&copy; 2025 Dinewise | Powered by Cognizant</p>
     </footer>
 </body>

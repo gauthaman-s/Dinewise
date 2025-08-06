@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="{% static 'index.css' %}">
-    <script src="{% static 'main.js' %}" defer></script>
 </head>
 <body>
     <nav class="navbar">
@@ -19,18 +18,22 @@
             <a href="{% url 'login' %}">Login</a>
         </div>
     </nav>
-    <main class="form-section">
-        <h2>Login</h2>
-        <form class="styled-form">
+    <main class="form-section" style="max-width:400px;margin:2rem auto;padding:2rem 1.5rem;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(27,94,32,0.07);min-height:60vh;">
+        <h2 style="text-align:center;margin-bottom:2rem;">Login</h2>
+        {% if error %}
+        <div style="color:#e74c3c;text-align:center;margin-bottom:1rem;">{{ error }}</div>
+        {% endif %}
+        <form method="post" style="display:flex;flex-direction:column;gap:1.2rem;">
+            {% csrf_token %}
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required><br>
+            <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br>
-            <button type="submit">Login</button>
+            <input type="password" id="password" name="password" required>
+            <button type="submit" class="menu-btn" style="margin-top:1.5rem;">Login</button>
         </form>
-        <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+        <p style="text-align:center;margin-top:1.5rem;">Don't have an account? <a href="{% url 'register' %}">Register</a></p>
     </main>
-    <footer class="footer">
+    <footer class="footer" style="position:fixed;left:0;bottom:0;width:100%;z-index:10;">
         <p>&copy; 2025 Dinewise | Powered by Cognizant</p>
     </footer>
 </body>
